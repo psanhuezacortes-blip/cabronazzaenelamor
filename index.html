@@ -1,0 +1,1688 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cabronazza en el Amor — Protocolo de Selección Estratégica</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Cinzel:wght@400;600;700&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #c9a84c;
+  --gold-glow: 0 0 12px rgba(201,168,76,0.6), 0 0 28px rgba(201,168,76,0.25), 0 0 55px rgba(201,168,76,0.1);
+  --gold-glow-strong: 0 0 8px rgba(255,230,120,0.9), 0 0 20px rgba(201,168,76,0.7), 0 0 45px rgba(201,168,76,0.35);
+  --gold-dim: rgba(201,168,76,0.15);
+  --gold-line: rgba(201,168,76,0.3);
+  --bg: #05050a;
+  --bg2: #080810;
+  --bg3: #040407;
+  --text: #f5efe2;
+  --text-dim: #b0a898;
+  --text-mid: #d8d0c0;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+p { text-align: justify; }
+
+h1, h2, h3 { text-align: center; }
+
+.hero-subtitle, .hero-with, .hero-note, .hero-acceso, .hero-tag,
+.eyebrow, .big-statement, .diferente-quote, .precio-context,
+.precio-desc, .precio-fine, .urgency p, .final-cta p,
+.bono-content .bono-title, .pain-list li, .obtiene-list li {
+  text-align: center;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Cormorant Garamond', serif;
+  overflow-x: hidden;
+}
+
+/* ── GRAIN OVERLAY ── */
+body::before {
+  content:'';
+  position:fixed;
+  inset:0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events:none;
+  z-index:1000;
+  opacity:0.4;
+}
+
+/* ── SCROLL ANIMATION ── */
+.reveal {
+  opacity:0;
+  transform: translateY(30px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.reveal.visible {
+  opacity:1;
+  transform: translateY(0);
+}
+
+/* ── SHARED ── */
+.eyebrow {
+  font-family:'Cinzel', serif;
+  font-size:9px;
+  letter-spacing:6px;
+  color: var(--gold);
+  text-transform:uppercase;
+  margin-bottom:20px;
+  display:block;
+}
+
+.gold-line {
+  width:60px;
+  height:1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 0 auto;
+}
+
+.section {
+  padding: 60px 20px;
+  position:relative;
+}
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.container-wide {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* ── CTA BUTTON ── */
+.cta-btn {
+  display:inline-block;
+  border: 1px solid rgba(201,168,76,0.7);
+  padding: 18px 48px;
+  font-family:'Cinzel', serif;
+  font-size:11px;
+  letter-spacing:4px;
+  color: #f5e4a8;
+  text-transform:uppercase;
+  text-decoration:none;
+  position:relative;
+  overflow:hidden;
+  transition: all 0.4s ease;
+  background: rgba(201,168,76,0.12);
+  cursor: pointer;
+  box-shadow: 0 0 18px rgba(201,168,76,0.35), 0 0 40px rgba(201,168,76,0.15), inset 0 0 12px rgba(201,168,76,0.08);
+  text-shadow: 0 0 12px rgba(255,230,120,0.6);
+}
+
+.cta-btn::before {
+  content:'';
+  position:absolute;
+  inset:0;
+  background: rgba(201,168,76,0.22);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.cta-btn:hover::before { transform: scaleX(1); }
+.cta-btn:hover {
+  border-color: rgba(255,220,100,0.95);
+  letter-spacing:5px;
+  color: #fff8e0;
+  box-shadow: 0 0 30px rgba(255,230,120,0.6), 0 0 70px rgba(201,168,76,0.35), 0 0 120px rgba(201,168,76,0.15), inset 0 0 20px rgba(201,168,76,0.15);
+  text-shadow: 0 0 20px rgba(255,240,150,0.9);
+}
+
+/* ══════════════════════════════════
+   HERO
+══════════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+  padding: 80px 20px;
+}
+
+.hero-bg {
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0.07;
+  pointer-events:none;
+}
+
+.hero-tag-sub {
+  font-size: 7px;
+  letter-spacing: 4px;
+  opacity: 0.5;
+  font-style: italic;
+  text-transform: lowercase;
+}
+
+
+
+.hero-content { position:relative; z-index:2; max-width:800px; }
+
+.hero-tag {
+  font-family:'Cinzel', serif;
+  font-size:8px;
+  letter-spacing:7px;
+  color: var(--gold);
+  text-transform:uppercase;
+  margin-bottom:48px;
+  opacity:0.7;
+  animation: fadeIn 1.5s ease forwards;
+}
+
+.hero h1 {
+  font-size: clamp(56px, 9vw, 116px);
+  font-weight:300;
+  line-height:1.02;
+  letter-spacing:-2px;
+  color: var(--text);
+  margin-bottom:16px;
+  animation: slideUp 1.2s ease 0.2s both;
+}
+
+.hero h1 em {
+  font-style:italic;
+  color: var(--gold);
+}
+
+.hero-subtitle {
+  font-size: clamp(18px, 2.6vw, 24px);
+  color: var(--text-dim);
+  font-weight:300;
+  line-height:1.7;
+  margin: 32px auto;
+  max-width:560px;
+  animation: slideUp 1.2s ease 0.4s both;
+}
+
+.hero-subtitle em {
+  font-style:italic;
+  color: var(--text-mid);
+}
+
+.migajas {
+  font-style: italic;
+  color: var(--gold);
+  text-shadow: 0 0 14px rgba(255,220,100,0.6), 0 0 32px rgba(201,168,76,0.35);
+  animation: goldPulse 3s ease-in-out infinite;
+  font-weight: 400;
+}
+
+.hero-with {
+  font-size: clamp(28px, 4.5vw, 58px);
+  font-weight: 300;
+  line-height: 1.15;
+  color: var(--text);
+  margin: 28px auto 8px;
+  max-width: 600px;
+  letter-spacing: -0.5px;
+  animation: slideUp 1.2s ease 0.35s both;
+}
+
+.hero-with em {
+  font-style: italic;
+  color: var(--gold);
+  display: block;
+  font-size: 1.18em;
+  text-shadow: 0 0 22px rgba(255,230,120,0.75), 0 0 55px rgba(201,168,76,0.45), 0 0 100px rgba(201,168,76,0.2);
+  animation: goldPulse 3s ease-in-out infinite, slideUp 1.2s ease 0.35s both;
+}
+
+.hero .cta-wrap {
+  margin-top:48px;
+  animation: slideUp 1.2s ease 0.6s both;
+}
+
+.hero-note {
+  margin-top:24px;
+  font-family:'Montserrat', sans-serif;
+  font-size:10px;
+  letter-spacing:2px;
+  color: var(--text-dim);
+  opacity:0.5;
+  animation: fadeIn 1.5s ease 1s both;
+}
+
+.hero-note .hero-note-deadline {
+  display: inline-block;
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  opacity: 1;
+  text-transform: uppercase;
+  animation: deadlinePulse 2s ease-in-out infinite;
+  text-shadow: 0 0 12px rgba(255,220,100,0.7), 0 0 28px rgba(201,168,76,0.4);
+  position: relative;
+}
+
+.hero-note .hero-note-deadline::before {
+  content: '◆';
+  font-size: 6px;
+  margin-right: 7px;
+  vertical-align: middle;
+  animation: diamondBlink 2s ease-in-out infinite;
+}
+
+.hero-note .hero-note-deadline::after {
+  content: '◆';
+  font-size: 6px;
+  margin-left: 7px;
+  vertical-align: middle;
+  animation: diamondBlink 2s ease-in-out infinite 0.2s;
+}
+
+.hero-acceso {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(9px, 1.1vw, 11px);
+  letter-spacing: 4px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-top: 8px;
+  opacity: 0.65;
+  animation: fadeIn 1.5s ease 1.2s both;
+  text-shadow: 0 0 10px rgba(201,168,76,0.4);
+}
+
+@keyframes deadlinePulse {
+  0%,100% {
+    text-shadow: 0 0 10px rgba(255,220,100,0.5), 0 0 24px rgba(201,168,76,0.3);
+    letter-spacing: 3px;
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(255,235,120,0.95), 0 0 45px rgba(201,168,76,0.65), 0 0 80px rgba(201,168,76,0.25);
+    letter-spacing: 4px;
+  }
+}
+
+@keyframes diamondBlink {
+  0%,100% { opacity: 0.4; transform: scale(0.8); }
+  50%      { opacity: 1;   transform: scale(1.3); }
+}
+
+/* ══════════════════════════════════
+   SPIRAL DIVIDER
+══════════════════════════════════ */
+.spiral-divider {
+  text-align:center;
+  padding: 20px;
+  opacity:0.2;
+}
+.spiral-divider svg { width:80px; }
+
+/* ══════════════════════════════════
+   PAIN — "¿Te pasa que...?"
+══════════════════════════════════ */
+.pain { background: var(--bg2); }
+
+.pain h2 {
+  font-size: clamp(58px, 8.5vw, 104px);
+  font-weight:300;
+  line-height:1.1;
+  margin-bottom:48px;
+  letter-spacing:-1px;
+}
+
+.pain h2 em { font-style:italic; color: var(--gold); }
+
+.pain-list {
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  margin-bottom:64px;
+}
+
+.pain-list li {
+  display:flex;
+  align-items:flex-start;
+  gap:20px;
+  font-size:21px;
+  color: var(--text-mid);
+  font-weight:300;
+  line-height:1.5;
+  padding-bottom:16px;
+  border-bottom:1px solid rgba(255,255,255,0.04);
+}
+
+.pain-list li .bullet {
+  width:4px;
+  height:4px;
+  background: var(--gold);
+  border-radius:50%;
+  margin-top:10px;
+  flex-shrink:0;
+}
+
+/* ══════════════════════════════════
+   REFRAME — "Pensaste que..."
+══════════════════════════════════ */
+.reframe { background: var(--bg3); }
+
+.reframe-title {
+  font-size: clamp(52px, 8vw, 108px);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -2px;
+  margin-bottom: 48px;
+  text-align: center;
+}
+
+.reframe-title em {
+  font-style: italic;
+  color: var(--gold);
+  text-shadow: 0 0 22px rgba(255,230,120,0.75), 0 0 55px rgba(201,168,76,0.45), 0 0 100px rgba(201,168,76,0.2);
+  animation: goldPulse 3s ease-in-out infinite;
+}
+
+.reframe-grid {
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:1px;
+  background: rgba(201,168,76,0.1);
+  border: 1px solid rgba(201,168,76,0.1);
+  margin: 48px 0;
+}
+
+.reframe-cell {
+  background: var(--bg3);
+  padding:32px 28px;
+}
+
+.reframe-cell .label-sm {
+  font-family:'Cinzel', serif;
+  font-size:8px;
+  letter-spacing:4px;
+  color: var(--gold);
+  opacity:0.5;
+  margin-bottom:16px;
+  display:block;
+}
+
+.reframe-cell p {
+  font-size:19px;
+  color: var(--text-mid);
+  line-height:1.7;
+  font-weight:300;
+}
+
+.reframe-cell.highlight { background: rgba(201,168,76,0.04); }
+.reframe-cell.highlight p { color: var(--text); }
+
+.big-statement {
+  font-size: clamp(36px, 5vw, 62px);
+  font-weight:300;
+  line-height:1.2;
+  text-align:center;
+  margin: 60px auto;
+  max-width:600px;
+}
+
+.big-statement em { font-style:italic; color: var(--gold); }
+
+/* ══════════════════════════════════
+   IMAGINE
+══════════════════════════════════ */
+.imagine { background: var(--bg); }
+
+.imagine h2 {
+  font-size: clamp(52px, 6.5vw, 88px);
+  font-weight:300;
+  line-height:1.05;
+  letter-spacing:-1.5px;
+  margin-bottom:56px;
+}
+
+.imagine h2 em { font-style:italic; color: var(--gold); }
+
+.imagine-grid {
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap:2px;
+  background: rgba(201,168,76,0.08);
+}
+
+.imagine-item {
+  background: var(--bg);
+  padding:32px 28px;
+  display:flex;
+  gap:16px;
+  align-items:flex-start;
+  transition: background 0.3s;
+}
+
+.imagine-item:hover { background: rgba(201,168,76,0.04); }
+
+.imagine-item .num {
+  font-family:'Cinzel', serif;
+  font-size:9px;
+  color: var(--gold);
+  opacity:0.5;
+  padding-top:4px;
+  flex-shrink:0;
+  letter-spacing:2px;
+}
+
+.imagine-item p {
+  font-size:20px;
+  color: var(--text-mid);
+  font-weight:300;
+  line-height:1.5;
+}
+
+/* ══════════════════════════════════
+   WHAT IS IT
+══════════════════════════════════ */
+.what { background: var(--bg2); }
+
+.what-inner {
+  border: 1px solid var(--gold-line);
+  padding: 64px;
+  position:relative;
+}
+
+.what-inner::before {
+  content:'φ';
+  position:absolute;
+  top:-40px;
+  left:50%;
+  transform:translateX(-50%);
+  font-family:'Cormorant Garamond', serif;
+  font-size:80px;
+  font-weight:300;
+  color: var(--gold);
+  background: var(--bg2);
+  padding:0 20px;
+  line-height:1;
+}
+
+.what h2 {
+  font-size: clamp(42px, 5.5vw, 68px);
+  font-weight:300;
+  line-height:1.15;
+  margin-bottom:32px;
+  letter-spacing:-1px;
+}
+
+.what h2 em { font-style:italic; color: var(--gold); }
+
+.what p {
+  font-size:21px;
+  color: var(--text-mid);
+  line-height:1.85;
+  font-weight:300;
+  margin-bottom:20px;
+}
+
+/* ══════════════════════════════════
+   BONOS
+══════════════════════════════════ */
+.bonos { background: var(--bg3); }
+
+.bonos h2 {
+  font-size: clamp(42px, 5.5vw, 68px);
+  font-weight:300;
+  margin-bottom:56px;
+  letter-spacing:-1px;
+}
+
+.bonos h2 em { font-style:italic; color: var(--gold); }
+
+.bono-list {
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+}
+
+.bono {
+  background: var(--bg3);
+  border: 1px solid rgba(201,168,76,0.08);
+  padding:40px 48px;
+  display:grid;
+  grid-template-columns: 80px 1fr;
+  gap:32px;
+  align-items:start;
+  transition: border-color 0.3s;
+}
+
+.bono:hover { border-color: rgba(201,168,76,0.25); }
+
+.bono-num {
+  font-family:'Cinzel', serif;
+  font-size:32px;
+  color: var(--gold);
+  opacity:0.5;
+  font-weight:600;
+  line-height:1;
+}
+
+.bono-content h3 {
+  font-family:'Cinzel', serif;
+  font-size:11px;
+  letter-spacing:5px;
+  color: var(--gold);
+  text-transform:uppercase;
+  margin-bottom:10px;
+  font-weight:400;
+  text-align: left;
+  opacity: 0.75;
+}
+
+.bono-content .bono-title {
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight:300;
+  color: var(--text);
+  margin-bottom:16px;
+  line-height:1.15;
+  text-align: left;
+  letter-spacing: -0.5px;
+  text-shadow: 0 0 30px rgba(240,232,213,0.1);
+}
+
+.bono-content p {
+  font-size:19px;
+  color: #c8c0b0;
+  line-height:1.75;
+  font-weight:300;
+  text-align: left;
+}
+
+/* ══════════════════════════════════
+   BIO
+══════════════════════════════════ */
+.bio { background: var(--bg); }
+
+.bio-inner {
+  display:grid;
+  grid-template-columns: 1fr 2fr;
+  gap:64px;
+  align-items:start;
+}
+
+.bio-left .name-large {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight:300;
+  line-height:1.1;
+  letter-spacing:-1px;
+  margin-bottom:12px;
+}
+
+.bio-left .name-large em { font-style:italic; color: var(--gold); }
+
+.bio-left .role {
+  font-family:'Montserrat', sans-serif;
+  font-size:10px;
+  letter-spacing:3px;
+  color: var(--text-dim);
+  text-transform:uppercase;
+  font-weight:300;
+  line-height:1.6;
+}
+
+.bio-left .gold-line { margin: 24px 0; }
+
+.bio-right p {
+  font-size:21px;
+  color: var(--text-mid);
+  line-height:1.85;
+  font-weight:300;
+}
+
+/* ══════════════════════════════════
+   PRECIO
+══════════════════════════════════ */
+.precio { background: var(--bg2); text-align:center; }
+
+.precio-context {
+  font-size: clamp(20px, 2.5vw, 26px);
+  color: #b8b0a0;
+  line-height:1.8;
+  max-width:520px;
+  margin:0 auto 48px;
+  font-style:italic;
+}
+
+.precio-context s {
+  color: rgba(201,168,76,0.4);
+}
+
+.precio-box {
+  display:inline-block;
+  border: 1px solid var(--gold-line);
+  padding:56px 80px;
+  position:relative;
+  margin-bottom:40px;
+}
+
+.precio-box::before,
+.precio-box::after {
+  content:'';
+  position:absolute;
+  width:20px;
+  height:20px;
+  border-color: var(--gold);
+  border-style:solid;
+  opacity:0.4;
+}
+.precio-box::before { top:-1px; left:-1px; border-width:1px 0 0 1px; }
+.precio-box::after { bottom:-1px; right:-1px; border-width:0 1px 1px 0; }
+
+.precio-label {
+  font-family:'Cinzel', serif;
+  font-size: 12px;
+  letter-spacing:5px;
+  color: var(--gold);
+  opacity: 0.9;
+  margin-bottom:16px;
+  display:block;
+}
+
+.precio-amount {
+  font-size: clamp(70px, 12vw, 120px);
+  font-weight:300;
+  color: #f5efe0;
+  line-height:1;
+  letter-spacing:-3px;
+  margin-bottom:8px;
+  text-shadow: 0 0 40px rgba(245,239,224,0.15);
+}
+
+.precio-amount sup {
+  font-size:0.3em;
+  vertical-align:super;
+  color: var(--gold);
+  letter-spacing:0;
+}
+
+.precio-desc {
+  font-size: 17px;
+  color: #a8a098;
+  font-style:italic;
+}
+
+.precio-fine {
+  font-family:'Montserrat', sans-serif;
+  font-size:10px;
+  letter-spacing:2px;
+  color: var(--text-dim);
+  opacity:0.5;
+  margin-top:32px;
+  line-height:1.8;
+}
+
+/* ══════════════════════════════════
+   LO QUE OBTIENES
+══════════════════════════════════ */
+.obtiene { background: var(--bg3); }
+
+.obtiene h2 {
+  font-size: clamp(42px, 5.5vw, 68px);
+  font-weight:300;
+  letter-spacing:-1px;
+  margin-bottom:48px;
+}
+
+.obtiene h2 em { font-style:italic; color: var(--gold); }
+
+.obtiene-list {
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:0;
+  border: 1px solid rgba(201,168,76,0.1);
+}
+
+.obtiene-list li {
+  padding:24px 32px;
+  display:flex;
+  align-items:center;
+  gap:20px;
+  font-size:20px;
+  color: var(--text-mid);
+  font-weight:300;
+  border-bottom:1px solid rgba(201,168,76,0.06);
+  transition: background 0.3s;
+}
+
+.obtiene-list li:last-child { border-bottom:none; }
+.obtiene-list li:hover { background: rgba(201,168,76,0.03); }
+
+.obtiene-list li .check {
+  width:20px;
+  height:20px;
+  border:1px solid var(--gold-line);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+}
+
+.obtiene-list li .check::after {
+  content:'';
+  width:6px;
+  height:6px;
+  background: var(--gold);
+  border-radius:50%;
+}
+
+/* ══════════════════════════════════
+   DIFERENTE
+══════════════════════════════════ */
+.diferente { background: var(--bg); }
+
+.diferente-quote {
+  font-size: clamp(20px, 3vw, 28px);
+  font-weight:300;
+  line-height:1.65;
+  color: var(--text-mid);
+  font-style:italic;
+  max-width:680px;
+  margin:0 auto 56px;
+  text-align:center;
+}
+
+.diferente-quote strong {
+  font-style:normal;
+  color: var(--text);
+  font-weight:400;
+}
+
+.tres-pilares {
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:2px;
+  background: rgba(201,168,76,0.08);
+  margin-top:48px;
+}
+
+.pilar {
+  background: var(--bg);
+  padding:40px 32px;
+  text-align:center;
+}
+
+.pilar .pilar-num {
+  font-family:'Cinzel', serif;
+  font-size:32px;
+  color: var(--gold);
+  opacity:0.2;
+  margin-bottom:16px;
+  font-weight:600;
+}
+
+.pilar h3 {
+  font-family:'Cinzel', serif;
+  font-size:10px;
+  letter-spacing:3px;
+  color: var(--gold);
+  text-transform:uppercase;
+  margin-bottom:12px;
+  font-weight:400;
+}
+
+.pilar p {
+  font-size:21px;
+  color: var(--text-dim);
+  line-height:1.7;
+  font-weight:300;
+}
+
+/* ══════════════════════════════════
+   FAQ
+══════════════════════════════════ */
+.faq { background: var(--bg2); }
+
+.faq h2 {
+  font-size: clamp(42px, 5.5vw, 68px);
+  font-weight:300;
+  letter-spacing:-1px;
+  margin-bottom:48px;
+}
+
+.faq h2 em { font-style:italic; color: var(--gold); }
+
+.faq-list {
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+}
+
+.faq-item {
+  border: 1px solid rgba(201,168,76,0.08);
+  overflow:hidden;
+}
+
+.faq-q {
+  padding:24px 32px;
+  cursor:pointer;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-size:20px;
+  color: var(--text);
+  font-weight:300;
+  transition: background 0.3s;
+  user-select:none;
+}
+
+.faq-q:hover { background: rgba(201,168,76,0.04); }
+
+.faq-q .faq-icon {
+  width:20px;
+  height:20px;
+  border:1px solid var(--gold-line);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+  font-size:16px;
+  color: var(--gold);
+  transition: transform 0.3s;
+}
+
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+
+.faq-a {
+  max-height:0;
+  overflow:hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+  padding: 0 32px;
+}
+
+.faq-item.open .faq-a {
+  max-height:200px;
+  padding:0 32px 24px;
+}
+
+.faq-a p {
+  font-size:19px;
+  color: var(--text-dim);
+  line-height:1.75;
+  font-weight:300;
+  font-style:italic;
+}
+
+/* ══════════════════════════════════
+   URGENCY
+══════════════════════════════════ */
+.urgency {
+  background: var(--bg3);
+  border-top:1px solid rgba(201,168,76,0.1);
+  border-bottom:1px solid rgba(201,168,76,0.1);
+  text-align:center;
+}
+
+.urgency-inner {
+  max-width:600px;
+  margin:0 auto;
+}
+
+.urgency p {
+  font-size:19px;
+  color: var(--text-dim);
+  line-height:1.8;
+  margin-bottom:12px;
+  font-weight:300;
+}
+
+.urgency p strong {
+  color: var(--gold);
+  font-weight:400;
+}
+
+/* ══════════════════════════════════
+   FINAL CTA
+══════════════════════════════════ */
+.final-cta {
+  background: var(--bg);
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+
+.final-cta .bg-phi {
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0.03;
+  font-family:'Cormorant Garamond', serif;
+  font-size:600px;
+  font-weight:300;
+  color: var(--gold);
+  pointer-events:none;
+  user-select:none;
+}
+
+.final-cta .content { position:relative; z-index:2; }
+
+.final-cta h2 {
+  font-size: clamp(52px, 8vw, 104px);
+  font-weight:300;
+  line-height:1.05;
+  letter-spacing:-2px;
+  margin-bottom:24px;
+}
+
+.final-cta h2 em { font-style:italic; color: var(--gold); }
+
+.final-cta p {
+  font-size:21px;
+  color: var(--text-dim);
+  font-style:italic;
+  margin-bottom:48px;
+}
+
+.final-cta .handle {
+  margin-top:40px;
+  font-family:'Montserrat', sans-serif;
+  font-size:10px;
+  letter-spacing:4px;
+  color: var(--text-dim);
+  opacity:0.3;
+  text-transform:uppercase;
+}
+
+/* ══════════════════════════════════
+   FOOTER
+══════════════════════════════════ */
+footer {
+  background: #030305;
+  text-align:center;
+  padding:48px 20px;
+  border-top:1px solid rgba(201,168,76,0.06);
+}
+
+footer .footer-brand {
+  font-family:'Cinzel', serif;
+  font-size:10px;
+  letter-spacing:4px;
+  color: rgba(201,168,76,0.7);
+  text-transform:uppercase;
+  margin-bottom:16px;
+  display:block;
+}
+
+footer p {
+  font-family:'Montserrat', sans-serif;
+  font-size:9px;
+  letter-spacing:2px;
+  color: rgba(176,168,152,0.5);
+  text-transform:uppercase;
+  line-height: 2;
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+footer .footer-divider {
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,168,76,0.2), transparent);
+  margin: 16px auto;
+}
+
+/* ══════════════════════════════════
+   ANIMATIONS
+══════════════════════════════════ */
+@keyframes fadeIn {
+  from { opacity:0; }
+  to { opacity:1; }
+}
+@keyframes slideUp {
+  from { opacity:0; transform:translateY(40px); }
+  to { opacity:1; transform:translateY(0); }
+}
+
+/* ── FLOATING PHI SYMBOL ── */
+.phi-float {
+  position:fixed;right:32px;top:50%;transform:translateY(-50%);
+  font-family:'Cormorant Garamond',serif;font-size:18px;
+  color:rgba(201,168,76,0.12);letter-spacing:1px;
+  writing-mode:vertical-rl;font-style:italic;
+  pointer-events:none;z-index:10;
+  animation:phiPulse 4s ease-in-out infinite;
+}
+@keyframes phiPulse{0%,100%{opacity:0.08;transform:translateY(-50%) translateX(0);}50%{opacity:0.2;transform:translateY(-50%) translateX(-3px);}}
+
+/* ── GOLD CURSOR DOT ── */
+.cursor-dot {
+  position:fixed;width:5px;height:5px;
+  background:rgba(201,168,76,0.8);border-radius:50%;
+  pointer-events:none;z-index:9999;
+  transform:translate(-50%,-50%);
+  box-shadow:0 0 10px rgba(201,168,76,0.5);
+  transition:transform 0.1s ease;
+}
+.cursor-ring {
+  position:fixed;width:28px;height:28px;
+  border:1px solid rgba(201,168,76,0.3);border-radius:50%;
+  pointer-events:none;z-index:9998;
+  transform:translate(-50%,-50%);
+  transition:all 0.15s ease;
+}
+
+/* ── PAIN LIST ITEMS — stagger on reveal ── */
+.pain-list li {
+  transition: background 0.3s, border-color 0.3s, transform 0.4s ease, opacity 0.4s ease;
+  opacity:0;transform:translateX(-20px);
+}
+.pain-list.visible li { opacity:1;transform:translateX(0); }
+.pain-list.visible li:nth-child(1){transition-delay:0.05s;}
+.pain-list.visible li:nth-child(2){transition-delay:0.12s;}
+.pain-list.visible li:nth-child(3){transition-delay:0.19s;}
+.pain-list.visible li:nth-child(4){transition-delay:0.26s;}
+.pain-list.visible li:nth-child(5){transition-delay:0.33s;}
+.pain-list.visible li:nth-child(6){transition-delay:0.40s;}
+.pain-list.visible li:nth-child(7){transition-delay:0.47s;}
+
+/* ── IMAGINE GRID ITEMS — stagger ── */
+.imagine-item {
+  opacity:0;transform:translateY(20px);
+  transition:background 0.3s,opacity 0.5s ease,transform 0.5s ease;
+}
+.imagine-grid.visible .imagine-item{opacity:1;transform:translateY(0);}
+.imagine-grid.visible .imagine-item:nth-child(1){transition-delay:0.05s;}
+.imagine-grid.visible .imagine-item:nth-child(2){transition-delay:0.1s;}
+.imagine-grid.visible .imagine-item:nth-child(3){transition-delay:0.15s;}
+.imagine-grid.visible .imagine-item:nth-child(4){transition-delay:0.2s;}
+.imagine-grid.visible .imagine-item:nth-child(5){transition-delay:0.25s;}
+.imagine-grid.visible .imagine-item:nth-child(6){transition-delay:0.3s;}
+.imagine-grid.visible .imagine-item:nth-child(7){transition-delay:0.35s;}
+.imagine-grid.visible .imagine-item:nth-child(8){transition-delay:0.4s;}
+
+/* ── PILARES — stagger ── */
+.pilar {
+  opacity:0;transform:translateY(24px);
+  transition:background 0.3s, opacity 0.6s ease, transform 0.6s ease;
+}
+.pilar.visible{opacity:1;transform:translateY(0);}
+.tres-pilares .pilar:nth-child(1){transition-delay:0.1s;}
+.tres-pilares .pilar:nth-child(2){transition-delay:0.25s;}
+.tres-pilares .pilar:nth-child(3){transition-delay:0.4s;}
+
+/* ── REFRAME CELLS ── */
+.reframe-cell {
+  opacity:0;transform:translateY(16px);
+  transition:background 0.3s,opacity 0.6s ease,transform 0.6s ease;
+}
+.reframe-grid.visible .reframe-cell{opacity:1;transform:translateY(0);}
+.reframe-grid.visible .reframe-cell:nth-child(2){transition-delay:0.2s;}
+
+/* ── GOLD LINES GROW ON SCROLL ── */
+.gold-line {
+  width:0;
+  transition:width 1.2s ease;
+}
+.gold-line.visible { width:60px; }
+
+/* ── HERO BG PARALLAX ── */
+.hero-bg { transition: transform 0.1s linear; }
+
+/* ── URGENCY PULSE ── */
+.urgency {
+  animation: urgencyBreathe 4s ease-in-out infinite;
+}
+@keyframes urgencyBreathe{
+  0%,100%{border-color:rgba(201,168,76,0.1);}
+  50%{border-color:rgba(201,168,76,0.3);box-shadow:0 0 40px rgba(201,168,76,0.06) inset;}
+}
+
+/* ── BIG STATEMENT ── */
+.big-statement {
+  opacity:0;transform:scale(0.96);
+  transition:opacity 0.9s ease,transform 0.9s ease;
+}
+.big-statement.visible{opacity:1;transform:scale(1);}
+
+/* ── PRICE BOX GLOW ── */
+.precio-box {
+  transition: box-shadow 0.6s ease,border-color 0.6s ease;
+}
+.precio-box.visible {
+  box-shadow:0 0 60px rgba(201,168,76,0.08), 0 0 120px rgba(201,168,76,0.04);
+}
+
+/* ── FINAL CTA PHI SPIN ── */
+.final-cta .bg-phi {
+  animation: phiSpin 60s linear infinite;
+}
+@keyframes phiSpin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+
+/* ── GOLD TEXT GLOW — todas las letras doradas brillan ── */
+.hero h1 em,
+.pain h2 em,
+.reframe h2 em,
+.imagine h2 em,
+.faq h2 em,
+.final-cta h2 em {
+  text-shadow: var(--gold-glow);
+  animation: goldPulse 3s ease-in-out infinite;
+}
+.hero h1 em { animation-delay: 0s; }
+.pain h2 em { animation-delay: 0.4s; }
+.reframe h2 em { animation-delay: 0.8s; }
+.imagine h2 em { animation-delay: 1.2s; }
+.faq h2 em { animation-delay: 0.2s; }
+.final-cta h2 em { animation-delay: 0.6s; }
+
+.big-statement em {
+  text-shadow: var(--gold-glow);
+  animation: goldPulse 2.5s ease-in-out infinite;
+}
+
+/* Eyebrows */
+.eyebrow, .hero-tag {
+  text-shadow: 0 0 14px rgba(201,168,76,0.5), 0 0 30px rgba(201,168,76,0.2);
+  animation: goldPulseSubtle 4s ease-in-out infinite;
+}
+
+/* Pilar numbers */
+.pilar-num {
+  animation: goldPulseNum 3s ease-in-out infinite;
+}
+.tres-pilares .pilar:nth-child(1) .pilar-num { animation-delay:0s; }
+.tres-pilares .pilar:nth-child(2) .pilar-num { animation-delay:0.5s; }
+.tres-pilares .pilar:nth-child(3) .pilar-num { animation-delay:1s; }
+
+/* CTA buttons */
+.cta-btn {
+  text-shadow: 0 0 10px rgba(201,168,76,0.4);
+  animation: goldPulseBtn 2.8s ease-in-out infinite;
+}
+
+/* φ background symbol */
+.final-cta .bg-phi {
+  text-shadow: 0 0 120px rgba(201,168,76,0.15), 0 0 250px rgba(201,168,76,0.08);
+}
+
+/* Urgency strong */
+.urgency p strong {
+  text-shadow: 0 0 12px rgba(201,168,76,0.5);
+  animation: goldPulse 2s ease-in-out infinite;
+}
+
+/* Precio gold elements */
+.precio-num {
+  text-shadow: var(--gold-glow-strong);
+  animation: goldPulseStrong 2.5s ease-in-out infinite;
+}
+
+@keyframes goldPulse {
+  0%,100% { text-shadow: 0 0 8px rgba(201,168,76,0.4), 0 0 20px rgba(201,168,76,0.15); }
+  50%      { text-shadow: 0 0 16px rgba(255,230,120,0.8), 0 0 35px rgba(201,168,76,0.5), 0 0 65px rgba(201,168,76,0.2); }
+}
+@keyframes goldPulseSubtle {
+  0%,100% { text-shadow: 0 0 10px rgba(201,168,76,0.3); opacity:0.85; }
+  50%      { text-shadow: 0 0 18px rgba(201,168,76,0.7), 0 0 35px rgba(201,168,76,0.25); opacity:1; }
+}
+@keyframes goldPulseNum {
+  0%,100% { opacity:0.2; text-shadow:none; }
+  50%      { opacity:0.55; text-shadow: 0 0 20px rgba(201,168,76,0.6), 0 0 45px rgba(201,168,76,0.2); }
+}
+@keyframes goldPulseBtn {
+  0%,100% { text-shadow: 0 0 8px rgba(201,168,76,0.3); box-shadow: inset 0 0 0 rgba(201,168,76,0); }
+  50%      { text-shadow: 0 0 16px rgba(201,168,76,0.7), 0 0 32px rgba(201,168,76,0.25); box-shadow: 0 0 25px rgba(201,168,76,0.15); }
+}
+@keyframes goldPulseStrong {
+  0%,100% { text-shadow: 0 0 12px rgba(201,168,76,0.5), 0 0 28px rgba(201,168,76,0.2); }
+  50%      { text-shadow: 0 0 22px rgba(255,235,120,1), 0 0 45px rgba(201,168,76,0.7), 0 0 80px rgba(201,168,76,0.3); }
+}
+
+/* ── SCROLL PROGRESS BAR ── */
+.scroll-progress {
+  position:fixed;top:0;left:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(201,168,76,0.6),transparent);
+  z-index:9999;width:0%;
+  transition:width 0.1s linear;
+}
+
+/* ── SECTION GOLD ACCENT LINE ── */
+.section::before {
+  content:'';position:absolute;left:0;top:0;
+  width:0;height:1px;
+  background:linear-gradient(90deg,rgba(201,168,76,0.4),transparent);
+  transition:width 1.5s ease;
+}
+.section.visible::before { width:100%; }
+
+/* ══════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════ */
+@media (max-width:768px) {
+  .bio-inner { grid-template-columns:1fr; gap:32px; }
+  .tres-pilares { grid-template-columns:1fr; }
+  .bono { grid-template-columns:1fr; gap:12px; padding:28px 24px; }
+  .bono-num { font-size:20px; }
+  .reframe-grid { grid-template-columns:1fr; }
+  .what-inner { padding:40px 28px; padding-top:60px; }
+  .precio-box { padding:40px 36px; }
+  .section { padding:70px 20px; }
+}
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scroll-progress"></div>
+<div class="cursor-dot" id="cursor-dot"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+<div class="phi-float">φ · 1.618 · φ · 1.618 · φ · 1.618</div>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-content">
+    <p class="hero-tag">Protocolo Cabronazza<br><span class="hero-tag-sub">by Paulina Sanhueza</span></p>
+    <h1>Cómo construir<br>una relación <em>recíproca</em><br>desde la primera cita.</h1>
+    <p class="hero-with">Con un hombre<br><em>emocionalmente adulto.</em></p>
+    <p class="hero-subtitle">Sin perder tiempo negociando <em class="migajas">migajas.</em></p>
+    <div class="cta-wrap">
+      <a href="https://www.flow.cl/btn.php?token=ud91c4b974d741b82afa6de13e5bd5d69b2f654c" target="_blank" class="cta-btn">Acceder al Protocolo</a>
+    </div>
+    <p class="hero-note"><span class="hero-note-deadline">Esta edición cierra el 31 de marzo</span></p>
+    <p class="hero-acceso">Acceso inmediato.</p>
+  </div>
+</section>
+
+<!-- ══ PAIN ══ -->
+<section class="section pain reveal">
+  <div class="container">
+    <span class="eyebrow">¿Te reconoces aquí?</span>
+    <h2>¿Te pasa<br>que <em>…?</em></h2>
+    <ul class="pain-list">
+      <li><span class="bullet"></span>Minimizas banderas rojas porque "nadie es perfecto"</li>
+      <li><span class="bullet"></span>Te esfuerzas por no parecer exigente o intensa</li>
+      <li><span class="bullet"></span>Sientes que casi todos quieren algo casual — y tú quieres algo real</li>
+      <li><span class="bullet"></span>Te preguntas en silencio si el estándar que sostienes te está dejando sola</li>
+      <li><span class="bullet"></span>Sales con alguien, todo parece bien… y después se diluye sin explicación</li>
+      <li><span class="bullet"></span>Te dices "mejor sola que mal acompañada"… pero igual duele</li>
+      <li><span class="bullet"></span>Te descubres pensando "¿seré yo el problema?" aunque sabes que no lo eres</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ══ REFRAME ══ -->
+<section class="section reframe reveal">
+  <div class="container">
+    <span class="eyebrow">El patrón que se repite</span>
+    <h2 class="reframe-title">¿Pensaste que<br>el problema <em>eras tú?</em></h2>
+    <div class="reframe-grid">
+      <div class="reframe-cell">
+        <span class="label-sm">Lo que hiciste</span>
+        <p>Invertiste en ti. Fuiste a terapia. Leíste. Reflexionaste. Te prometiste no ilusionarte tan rápido. Trabajaste tu autoestima, sanaste, aprendiste a fluir.</p>
+      </div>
+      <div class="reframe-cell highlight">
+        <span class="label-sm">Y aun así</span>
+        <p>El patrón se repitió. No porque te falte algo. Sino porque nadie te enseñó a verificar antes de involucrarte.</p>
+      </div>
+    </div>
+    <div class="big-statement reveal">
+      No es falta de inteligencia.<br>Es <em>biología mal manejada.</em>
+    </div>
+  </div>
+</section>
+
+<!-- ══ IMAGINE ══ -->
+<section class="section imagine reveal">
+  <div class="container-wide">
+    <div class="container" style="margin-bottom:56px;">
+      <span class="eyebrow">La vida que quieres</span>
+      <h2>Imagina <em>esto.</em></h2>
+    </div>
+    <div class="imagine-grid">
+      <div class="imagine-item"><span class="num">01</span><p>Salir con un hombre emocionalmente adulto que quiera algo real contigo</p></div>
+      <div class="imagine-item"><span class="num">02</span><p>Un respeto coherente — no solo palabras bonitas</p></div>
+      <div class="imagine-item"><span class="num">03</span><p>Reciprocidad real: dar y recibir en equilibrio</p></div>
+      <div class="imagine-item"><span class="num">04</span><p>Una relación monógama sin juegos ni ambigüedades</p></div>
+      <div class="imagine-item"><span class="num">05</span><p>Un plan común: viajes, proyectos, rituales compartidos</p></div>
+      <div class="imagine-item"><span class="num">06</span><p>Sentirte elegida con claridad — no como opción</p></div>
+      <div class="imagine-item"><span class="num">07</span><p>Conversaciones profundas sin que él desaparezca</p></div>
+      <div class="imagine-item"><span class="num">08</span><p>Paz. Poder descansar en la relación.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ QUÉ ES ══ -->
+<section class="section what reveal">
+  <div class="container">
+    <div class="what-inner">
+      <span class="eyebrow" style="text-align:center;display:block;">La masterclass</span>
+      <h2 style="text-align:center;">¿Qué es <em>Cabronazza</em><br>en el Amor?</h2>
+      <div class="gold-line" style="margin:28px auto 36px;"></div>
+      <p>Una masterclass intensiva donde instalas un <strong style="color:var(--text);font-weight:400;">Protocolo de Selección Estratégica</strong> para pasar de la química a construir algo real — sin caos, sin acertijos, sin tener que adivinar qué está pasando.</p>
+      <p>Aquí aprendes a ser elegida también cuando muestras tu lado humano. A sentirte protegida emocionalmente. A activar inversión masculina sostenida. Y a <strong style="color:var(--gold);font-weight:400;">elegir desde la evidencia — no desde la ilusión</strong> — antes de comprometerte emocionalmente.</p>
+      <p style="color:var(--text-dim);font-style:italic;">Ya sea en tu próxima cita, con alguien que estás conociendo, o dentro de tu relación actual.</p>
+      <div style="text-align:center;margin-top:40px;">
+        <a href="https://www.flow.cl/btn.php?token=ud91c4b974d741b82afa6de13e5bd5d69b2f654c" target="_blank" class="cta-btn">Acceder al Protocolo</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BONOS ══ -->
+<section class="section bonos reveal">
+  <div class="container">
+    <span class="eyebrow">Incluido en el protocolo</span>
+    <h2>Además <em>incluye</em></h2>
+    <div class="bono-list">
+      <div class="bono reveal">
+        <div class="bono-num">01</div>
+        <div class="bono-content">
+          <h3>Bono 1</h3>
+          <div class="bono-title">Mapa de Reciprocidad Real</div>
+          <p>No todos los hombres que "se portan bien" son compatibles contigo. Este mapa te da los indicadores concretos para saberlo — antes de involucrarte. Para que el amor que elijas sume energía y te permita bajar la guardia sin perder tu poder.</p>
+        </div>
+      </div>
+      <div class="bono reveal">
+        <div class="bono-num">02</div>
+        <div class="bono-content">
+          <h3>Bono 2</h3>
+          <div class="bono-title">Proyección de Valor</div>
+          <p>Para dejar de negociar <em class="migajas">migajas.</em> Aprenderás a elegir desde el poder y no desde la carencia. A posicionarte como prioridad — no como opción. Y a activar en el hombre correcto inversión real: tiempo, energía y presencia.</p>
+        </div>
+      </div>
+      <div class="bono reveal">
+        <div class="bono-num">03</div>
+        <div class="bono-content">
+          <h3>Bono 3</h3>
+          <div class="bono-title">12 Banderas Rojas Invisibles</div>
+          <p>El problema nunca fueron las banderas rojas evidentes. Fueron las invisibles. Los micro-comportamientos que estaban desde el inicio y que nadie te enseñó a leer. Aquí los tienes identificados. Para que la próxima vez sepas antes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BIO ══ -->
+<section class="section bio reveal">
+  <div class="container">
+    <div class="bio-inner">
+      <div class="bio-left">
+        <div class="name-large"><em>Paulina</em><br>Sanhueza</div>
+        <div class="gold-line" style="margin:20px 0;"></div>
+        <div class="role">Mentora<br>Abogada especializada<br>en divorcios internacionales</div>
+      </div>
+      <div class="bio-right">
+        <span class="eyebrow">Quién soy</span>
+        <p>He visto de cerca cómo relaciones que comenzaron con "química increíble" terminaron en conflictos largos, emocionalmente desgastantes y financieramente costosos.</p>
+        <br>
+        <p>La mayoría no empezó mal. Empezó sin verificación suficiente — sin comprobar intención, coherencia y estabilidad antes de comprometerse.</p>
+        <br>
+        <p style="color:var(--text-dim);font-style:italic;">Una década de experiencia en divorcios internacionales dio origen a este Protocolo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PRECIO ══ -->
+<section class="section precio reveal" id="precio">
+  <div class="container">
+    <span class="eyebrow">Tu inversión</span>
+    <p class="precio-context">
+      Una consulta de una hora con una abogada especializada en divorcios internacionales parte de <s>$150 USD</s>.<br>
+      Un proceso de divorcio internacional promedio cuesta entre <s>$5,000 y $20,000 USD</s>.
+    </p>
+    <div class="precio-box">
+      <span class="precio-label">Cabronazza en el Amor</span>
+      <div class="precio-amount"><sup>$</sup>21<sup style="font-size:0.25em;letter-spacing:1px;color:var(--text-dim);">USD</sup></div>
+      <div class="precio-desc">Pago único · Sin suscripciones · Sin condiciones ocultas</div>
+    </div>
+    <br>
+    <a href="https://www.flow.cl/btn.php?token=ud91c4b974d741b82afa6de13e5bd5d69b2f654c" target="_blank" class="cta-btn">Acceder al Protocolo Ahora</a>
+    <p class="precio-fine">
+      No porque valga menos.<br>
+      Porque el objetivo es que lo apliques esta semana, no que lo pienses durante meses.
+    </p>
+  </div>
+</section>
+
+<!-- ══ LO QUE OBTIENES ══ -->
+<section class="section obtiene reveal">
+  <div class="container">
+    <span class="eyebrow">Resumen completo</span>
+    <h2>Lo que <em>obtienes</em></h2>
+    <ul class="obtiene-list">
+      <li><span class="check"></span>Masterclass completa Cabronazza en el Amor</li>
+      <li><span class="check"></span>Instalación del Protocolo de Selección Estratégica</li>
+      <li><span class="check"></span>Secuencia precisa: cuándo avanzar, cuándo mantener distancia y cuándo salir</li>
+      <li><span class="check"></span>Sistema de verificación previa al involucramiento</li>
+      <li><span class="check"></span>Bono 1 — Mapa de Reciprocidad Real</li>
+      <li><span class="check"></span>Bono 2 — Proyección de Valor</li>
+      <li><span class="check"></span>Bono 3 — 12 Banderas Rojas Invisibles</li>
+      <li><span class="check"></span>Acceso digital inmediato · Sin esperas · Empiezas hoy</li>
+    </ul>
+    <div style="text-align:center;margin-top:48px;">
+      <a href="https://www.flow.cl/btn.php?token=ud91c4b974d741b82afa6de13e5bd5d69b2f654c" target="_blank" class="cta-btn">Quiero el Protocolo · $21 USD</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ POR QUÉ ES DIFERENTE ══ -->
+<section class="section diferente reveal">
+  <div class="container">
+    <span class="eyebrow">Por qué es diferente</span>
+    <div class="diferente-quote">
+      Atraer nunca fue el problema. El problema es <strong>involucrarte antes de comprobar</strong> tres cosas básicas.
+    </div>
+    <div class="gold-line"></div>
+    <div class="tres-pilares" style="margin-top:48px;">
+      <div class="pilar reveal">
+        <div class="pilar-num">I</div>
+        <h3>Consistencia</h3>
+        <p>Lo que dice coincide con lo que hace. No con lo que promete.</p>
+      </div>
+      <div class="pilar reveal">
+        <div class="pilar-num">II</div>
+        <h3>Intención</h3>
+        <p>No ambigüedad. No "vemos qué pasa". Claridad desde el inicio.</p>
+      </div>
+      <div class="pilar reveal">
+        <div class="pilar-num">III</div>
+        <h3>Inversión</h3>
+        <p>Tiempo, energía y esfuerzo real — antes de que tú accedas a él.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FAQ ══ -->
+<section class="section faq reveal">
+  <div class="container">
+    <span class="eyebrow">Preguntas frecuentes</span>
+    <h2>Tus <em>dudas</em></h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">¿Esto funciona si estoy en una app de citas?<span class="faq-icon">+</span></div>
+        <div class="faq-a"><p>Sí. Especialmente ahí. Donde hay más volumen y menos intención, el criterio lo es todo.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">¿Y si llevo años soltera y ya no confío en mi intuición?<span class="faq-icon">+</span></div>
+        <div class="faq-a"><p>Precisamente. La intuición sola no alcanza cuando la química la desordena. Esto no depende de cómo te sientas. Depende de lo que observas.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">¿Y si ya vi las señales pero igual me involucré?<span class="faq-icon">+</span></div>
+        <div class="faq-a"><p>Ver no es suficiente sin un sistema para interpretar. Eso es lo que cambia aquí.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">¿Y si me da miedo que me llamen difícil o exigente?<span class="faq-icon">+</span></div>
+        <div class="faq-a"><p>Eso pasa cuando no proyectas tu valor. Con el Protocolo incluido, dejas de negociar <em class="migajas">migajas</em> y empiezas a ser elegida con claridad.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">¿Cuánto tiempo para ver resultados?<span class="faq-icon">+</span></div>
+        <div class="faq-a"><p>Desde la primera interacción después de implementarlo.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">¿Necesito estar conociendo a alguien ahora mismo?<span class="faq-icon">+</span></div>
+        <div class="faq-a"><p>No. Pero cuando aparezca alguien, ya vas a saber qué hacer.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">¿Y si siento que los buenos hombres ya no existen?<span class="faq-icon">+</span></div>
+        <div class="faq-a"><p>Existen. El problema no es la escasez. Es saber reconocerlos cuando aparecen.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ URGENCY ══ -->
+<section class="section urgency reveal">
+  <div class="urgency-inner">
+    <span class="eyebrow">Tener en cuenta</span>
+    <p>Este no es un curso permanente abierto. Se libera por ediciones.</p>
+    <p><strong>Esta edición cierra el 31 de marzo.</strong></p>
+    <p>Si ya identificas el patrón, postergarlo solo lo mantiene activo.</p>
+    <br>
+    <a href="https://www.flow.cl/btn.php?token=ud91c4b974d741b82afa6de13e5bd5d69b2f654c" target="_blank" class="cta-btn">Acceder antes del 31 de marzo</a>
+  </div>
+</section>
+
+<!-- ══ FINAL CTA ══ -->
+<section class="section final-cta reveal">
+  <div class="bg-phi">φ</div>
+  <div class="content">
+    <span class="eyebrow">La decisión es tuya</span>
+    <h2>Elige con<br><em>evidencia.</em><br>No con ilusión.</h2>
+    <p>La naturaleza lleva millones de años verificando antes de construir.</p>
+    <a href="https://www.flow.cl/btn.php?token=ud91c4b974d741b82afa6de13e5bd5d69b2f654c" target="_blank" class="cta-btn">Acceder al Protocolo</a>
+    <div class="handle">@paulinasanhueza</div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-brand">Protocolo Cabronazza · Paulina Sanhueza</span>
+  <div class="footer-divider"></div>
+  <p>© 2026 Paulina Sanhueza · Todos los derechos reservados</p>
+  <p>Este producto es de carácter educativo e informativo. No constituye asesoría psicológica, terapéutica ni profesional de ningún tipo. Los resultados individuales pueden variar.</p>
+  <p>Al adquirir este producto aceptas los términos y condiciones del servicio. No se realizan devoluciones una vez entregado el acceso al contenido digital.</p>
+</footer>
+
+<script>
+const PHI = 1.6180339887;
+const TAU = Math.PI * 2;
+
+// ── SCROLL PROGRESS ─────────────────
+const scrollBar = document.getElementById('scroll-progress');
+window.addEventListener('scroll', () => {
+  const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+  scrollBar.style.width = pct + '%';
+
+  // Gold em elements near viewport center glow stronger
+  document.querySelectorAll('h1 em, h2 em, .big-statement em').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    const center = window.innerHeight / 2;
+    const dist = Math.abs(rect.top + rect.height/2 - center);
+    const proximity = Math.max(0, 1 - dist / (window.innerHeight * 0.6));
+    const glow = proximity * 35;
+    const outer = proximity * 70;
+    if (proximity > 0.1) {
+      el.style.textShadow = `0 0 ${glow}px rgba(255,230,120,${(proximity*0.9).toFixed(2)}), 0 0 ${outer}px rgba(201,168,76,${(proximity*0.4).toFixed(2)})`;
+    }
+  });
+});
+
+// ── CURSOR ───────────────────────────
+const dot  = document.getElementById('cursor-dot');
+const ring = document.getElementById('cursor-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove', e => {
+  mx=e.clientX; my=e.clientY;
+  dot.style.left=mx+'px'; dot.style.top=my+'px';
+});
+(function trackRing(){
+  rx += (mx-rx)*0.12; ry += (my-ry)*0.12;
+  ring.style.left=rx+'px'; ring.style.top=ry+'px';
+  requestAnimationFrame(trackRing);
+})();
+document.querySelectorAll('a,button,.faq-q').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    ring.style.width='44px'; ring.style.height='44px';
+    ring.style.borderColor='rgba(201,168,76,0.7)';
+  });
+  el.addEventListener('mouseleave', () => {
+    ring.style.width='28px'; ring.style.height='28px';
+    ring.style.borderColor='rgba(201,168,76,0.3)';
+  });
+});
+
+// ── SCROLL REVEAL ────────────────────
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.reveal, .pain-list, .imagine-grid, .reframe-grid, .big-statement, .gold-line, .pilar, .precio-box').forEach(el => revealObs.observe(el));
+
+// ── HERO PARALLAX ────────────────────
+const heroBg = document.querySelector('.hero-bg');
+window.addEventListener('scroll', () => {
+  if (heroBg) {
+    heroBg.style.transform = `translateY(${window.scrollY * 0.3}px)`;
+  }
+});
+
+// ── PAIN LIST ITEM HOVER GLOW ─────────
+document.querySelectorAll('.pain-list li').forEach(li => {
+  li.addEventListener('mouseenter', () => {
+    li.style.background = 'rgba(201,168,76,0.03)';
+    li.style.paddingLeft = '8px';
+    li.style.borderBottomColor = 'rgba(201,168,76,0.15)';
+  });
+  li.addEventListener('mouseleave', () => {
+    li.style.background = '';
+    li.style.paddingLeft = '';
+    li.style.borderBottomColor = '';
+  });
+});
+
+// ── SECTION GOLD LINE ENTRANCE ────────
+// Animate fib sequence in urgency section
+const urgEl = document.querySelector('.urgency');
+if(urgEl){
+  const urgObs = new IntersectionObserver(([e]) => {
+    if(e.isIntersecting) {
+      urgEl.style.transition='box-shadow 0.8s ease';
+      urgEl.style.boxShadow='0 0 80px rgba(201,168,76,0.07) inset';
+    }
+  },{threshold:0.3});
+  urgObs.observe(urgEl);
+}
+
+// ── FAQ ACCORDION ────────────────────
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+
+// ── CTA BUTTONS — gold shimmer on hover ──
+document.querySelectorAll('.cta-btn').forEach(btn => {
+  btn.addEventListener('mouseenter', () => {
+    btn.style.boxShadow='0 0 30px rgba(255,230,120,0.6), 0 0 70px rgba(201,168,76,0.35), 0 0 120px rgba(201,168,76,0.15), inset 0 0 20px rgba(201,168,76,0.15)';
+    btn.style.color='#fff8e0';
+  });
+  btn.addEventListener('mouseleave', () => {
+    btn.style.boxShadow='';
+    btn.style.color='';
+  });
+});
+</script>
+</body>
+</html>
