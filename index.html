@@ -1273,6 +1273,81 @@ footer .footer-divider {
   .precio-box { padding:40px 36px; }
   .section { padding:70px 20px; }
 }
+
+/* ── LECTURA CLARA: FONDO BLANCO, TEXTO NEGRO Y ACENTOS DORADOS ── */
+:root {
+  --bg: #ffffff;
+  --bg2: #ffffff;
+  --bg3: #ffffff;
+  --text: #111111;
+  --text-dim: #333333;
+  --text-mid: #222222;
+  --gold: #b38a2e;
+  --gold-line: rgba(179,138,46,.42);
+  --gold-dim: rgba(179,138,46,.10);
+}
+html, body { background:#fff !important; color:#111 !important; }
+body { font-size:20px; }
+body::before { display:none !important; }
+.section, .hero, .pain, .reframe, .imagine, .what, .bonos, .bio, .precio, .obtiene, .diferente, .faq, .urgency, .final-cta,
+.reframe-cell, .imagine-item, .pilar, .bono, .what-inner, .precio-box, footer {
+  background-color:#fff !important;
+  color:#111 !important;
+}
+p, li, .hero-subtitle, .hero-with, .hero-note, .pain-list li, .reframe-cell p,
+.imagine-item p, .what p, .bono-content p, .bio-right p, .precio-context,
+.precio-desc, .precio-fine, .obtiene-list li, .diferente-quote, .pilar p,
+.faq-a, .urgency p, footer p, .role, .handle {
+  color:#222 !important;
+}
+h1, h2, h3, .reframe-title, .big-statement, .precio-amount, .name-large,
+.bono-title, .faq-q, .final-cta h2 {
+  color:#111 !important;
+}
+h1 em, h2 em, h3 em, .hero h1 em, .hero-with em, .pain h2 em,
+.reframe-title em, .big-statement em, .imagine h2 em, .what h2 em,
+.bonos h2 em, .name-large em, .obtiene h2 em, .final-cta h2 em,
+.migajas, .eyebrow, .hero-tag, .hero-acceso, .precio-label,
+.bono-num, .bono-content h3, .pilar h3, .pilar-num, .num,
+.label-sm, .footer-brand, .precio-amount sup {
+  color:#b38a2e !important;
+  text-shadow:none !important;
+}
+.eyebrow, .hero-tag, .hero-acceso, .hero-note, .role, .precio-fine,
+.precio-label, .bono-content h3, .pilar h3, .reframe-cell .label-sm {
+  font-size:clamp(13px, 1.15vw, 16px) !important;
+  letter-spacing:2px !important;
+  opacity:1 !important;
+}
+.hero-subtitle, .hero-note, .pain-list li, .reframe-cell p, .imagine-item p,
+.what p, .bono-content p, .bio-right p, .obtiene-list li, .pilar p,
+.faq-a p, .precio-desc, .diferente-quote, .urgency p {
+  font-size:clamp(19px, 1.65vw, 24px) !important;
+}
+.cta-btn {
+  background:#fff !important;
+  color:#111 !important;
+  border:2px solid #b38a2e !important;
+  text-shadow:none !important;
+  box-shadow:none !important;
+  font-size:clamp(14px, 1.2vw, 17px) !important;
+  padding:20px 42px !important;
+}
+.cta-btn:hover { background:#b38a2e !important; color:#fff !important; }
+.reframe-grid, .imagine-grid, .tres-pilares { background:#fff !important; }
+.reframe-grid, .reframe-cell, .bono, .obtiene-list, .what-inner,
+.precio-box, .faq-item { border-color:rgba(179,138,46,.45) !important; }
+.pain-list li, .obtiene-list li { border-bottom-color:rgba(0,0,0,.12) !important; }
+.gold-line { opacity:1 !important; }
+.hero-bg, .bg-phi { opacity:.035 !important; }
+@media (max-width:700px) {
+  body { font-size:19px; }
+  .section { padding:52px 18px !important; }
+  .what-inner { padding:42px 22px !important; }
+  .bono { padding:30px 22px !important; }
+  .precio-box { padding:42px 28px !important; }
+}
+
 </style>
 </head>
 <body>
